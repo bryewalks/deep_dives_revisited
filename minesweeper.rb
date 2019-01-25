@@ -1,28 +1,38 @@
 class MineSweeper
   def initialize
     @counter = 0
-    @grid_answer = [["X","X","X","X","X","X","X","X"],
-            ["X","X","X","X","X","X","X","X"],
-            ["X","X","X","X","X","X","X","X"],
-            ["X","X","X","X","X","X","X","X"],
-            ["X","X","X","X","X","X","X","X"],
-            ["X","X","X","X","X","X","X","X"],
-            ["B","B","X","X","X","X","X","X"],
-            ["X","B","X","X","X","X","X","X"]].reverse
+    @grid_answer = [
+            [" "," "," "," "," "," "," "," "," "," "," "," "],
+            [" "," "," "," "," "," "," "," "," "," "," "," "],
+            [" ", " ","X","X","X","X","X","X","X","X"," "," "],
+            [" ", " ","X","B","X","X","X","X","B","X"," "," "],
+            [" ", " ","X","X","X","X","X","X","X","X"," "," "],
+            [" ", " ","X","X","X","X","X","X","X","X"," "," "],
+            [" ", " ","X","X","X","X","X","X","X","X"," "," "],
+            [" ", " ","X","X","X","X","X","X","X","X"," "," "],
+            [" ", " ","B","B","X","X","X","X","B","X"," "," "],
+            [" ", " ","X","X","X","X","X","X","X","X"," "," "],
+            [" "," "," "," "," "," "," "," "," "," "," "," "],
+            [" "," "," "," "," "," "," "," "," "," "," "," "]].reverse
 
-    @grid_unsolved = [["X","X","X","X","X","X","X","X"],
-            ["X","X","X","X","X","X","X","X"],
-            ["X","X","X","X","X","X","X","X"],
-            ["X","X","X","X","X","X","X","X"],
-            ["X","X","X","X","X","X","X","X"],
-            ["X","X","X","X","X","X","X","X"],
-            ["X","X","X","X","X","X","X","X"],
-            ["X","X","X","X","X","X","X","X"]]
+    @grid_unsolved = [
+            [" "," "," "," "," "," "," "," "," "," "," "," "],
+            [" "," "," "," "," "," "," "," "," "," "," "," "],
+            [" ", " ","X","X","X","X","X","X","X","X"," "," "],
+            [" ", " ","X","X","X","X","X","X","X","X"," "," "],
+            [" ", " ","X","X","X","X","X","X","X","X"," "," "],
+            [" ", " ","X","X","X","X","X","X","X","X"," "," "],
+            [" ", " ","X","X","X","X","X","X","X","X"," "," "],
+            [" ", " ","X","X","X","X","X","X","X","X"," "," "],
+            [" ", " ","X","X","X","X","X","X","X","X"," "," "],
+            [" ", " ","X","X","X","X","X","X","X","X"," "," "],
+            [" "," "," "," "," "," "," "," "," "," "," "," "],
+            [" "," "," "," "," "," "," "," "," "," "," "," "]]
 
     draw
 
 
-    # store data here as attributes
+    # store data here as attrib
   end
 
   def clear_screen!
@@ -76,7 +86,7 @@ class MineSweeper
     if @grid_answer[@x_coordinate + 1][@y_coordinate] != nil && @grid_answer[@x_coordinate + 1][@y_coordinate] == "B"
       @counter += 1
     end
-    
+
     if @counter > 0
       @grid_unsolved[@x_coordinate][@y_coordinate] = "#{@counter}"
     else 
@@ -92,14 +102,15 @@ class MineSweeper
 
   def draw
     clear_screen!
-    p @grid_unsolved[7]
-    p @grid_unsolved[6]
-    p @grid_unsolved[5]
-    p @grid_unsolved[4]
-    p @grid_unsolved[3]
-    p @grid_unsolved[2]
-    p @grid_unsolved[1]
-    p @grid_unsolved[0]
+    puts @grid_unsolved[7].join(" ")
+    puts @grid_unsolved[6].join(" ")
+    puts @grid_unsolved[5].join(" ")
+    puts @grid_unsolved[4].join(" ")
+    puts @grid_unsolved[3].join(" ")
+    puts @grid_unsolved[2].join(" ")
+    puts @grid_unsolved[1].join(" ")
+    puts @grid_unsolved[0].join(" ")
+
 
     # add draw code here
   end
@@ -112,9 +123,9 @@ class MineSweeper
     until @bomb_count == 0
 
       puts "please enter a x coordinate"
-      @x_coordinate = gets.chomp.to_i
+      @x_coordinate = gets.chomp.to_i + 1
       puts "please enter a y coordinate"
-      @y_coordinate = gets.chomp.to_i
+      @y_coordinate = gets.chomp.to_i + 1
 
       puts @grid_answer[@x_coordinate][@y_coordinate]
       # puts "Press enter"
